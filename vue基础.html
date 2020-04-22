@@ -8,11 +8,10 @@
 <body>
    <div id="app">
        <div class="input-num">
-           <button @click="sub">-</button>
-           <span>
-                {{num}}
-           </span>
-           <button @click="add">+</button>
+           <input type="button" value="点击显示图片" @click="showImg">
+           <input type="button" value="增加年龄" @click="addAge">
+           <img v-show="isShow" src="http://vip.ytesting.com/plug-in/login/images/sq-login.png" alt="图片展示">
+           <img v-show="age>=18" src="http://vip.ytesting.com/plug-in/login/images/sq-login.png" alt="图片展示">
        </div>
    </div>
    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -20,25 +19,16 @@
        var vm = new Vue({
            el:"#app",
            data:{
-                num : 1,
+                isShow:false,
+                age:15,
            },
            methods:{
-                add:function(){
-                    if(this.num <10){
-                        this.num++;
-                    }else{
-                        alert('已经是最大值了~~')
-                    }
-                    
-                },
-                sub:function(){
-                    if(this.num > 0){
-                        this.num--;
-                    }else{
-                        alert('已经是最小值了~~~')
-                    }
-                    
-                }
+               showImg:function(){
+                   this.isShow = !this.isShow;
+               },
+               addAge:function(){
+                   this.age++;
+               }
            }
        })
    </script>
