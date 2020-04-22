@@ -7,27 +7,40 @@
 </head>
 <body>
    <div id="app">
-       <input type="button" value="button1" >
-       <input type="button" value="button2" >
-       <input type="button" value="button3" >
+       <div class="input-num">
+           <button @click="sub">-</button>
+           <span>
+                {{num}}
+           </span>
+           <button @click="add">+</button>
+       </div>
    </div>
    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
    <script>
-       function doit(e){
-                    var btn = e.target.value;
-                    var span = document.getElementsByTagName('span')[0];
-                    if(span === undefined){
-                        span=document.createElement('span');
-                        span.innerHTML="<p>click "+btn+"</p>";
-                        document.getElementById('app').appendChild(span);
+       var vm = new Vue({
+           el:"#app",
+           data:{
+                num : 1,
+           },
+           methods:{
+                add:function(){
+                    if(this.num <10){
+                        this.num++;
                     }else{
-                        span.innerHTML = "<p>click "+btn+"</p>";
-                    }                    
-               }
-        inputs = document.getElementsByTagName('input');
-        for(var i = 0 ; i< inputs.length;i++){
-            inputs[i].addEventListener('click',doit);
-        }
+                        alert('已经是最大值了~~')
+                    }
+                    
+                },
+                sub:function(){
+                    if(this.num > 0){
+                        this.num--;
+                    }else{
+                        alert('已经是最小值了~~~')
+                    }
+                    
+                }
+           }
+       })
    </script>
 </body>
 </html>
