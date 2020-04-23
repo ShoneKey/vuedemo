@@ -57,7 +57,7 @@
                 </li>
             </ul>
         </section>
-        <footer class="footer">
+        <footer class="footer" v-show="list.length!=0">
             <span class="todo-count">
                 <strong>{{list.length}}</strong> items left
             </span>
@@ -75,7 +75,7 @@
             el:"#todoapp",
             data:{
                 list:["吃饭","睡觉","打豆豆"],
-                inputValue:""
+                inputValue:"",                
             },
             methods:{
                 add:function(){
