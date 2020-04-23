@@ -34,6 +34,9 @@
             display:block;
             margin:auto;
         }
+        .clear-completed{
+            float: right;
+        }
     </style>
 </head>
 <body>
@@ -54,7 +57,14 @@
                 </li>
             </ul>
         </section>
-        <footer class="footer"></footer>
+        <footer class="footer">
+            <span class="todo-count">
+                <strong>{{list.length}}</strong> items left
+            </span>
+            <button class="clear-completed">
+                Clear
+            </button>
+        </footer>
     </section>
     <footer class="info">
 
