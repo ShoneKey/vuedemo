@@ -61,7 +61,7 @@
             <span class="todo-count">
                 <strong>{{list.length}}</strong> items left
             </span>
-            <button class="clear-completed">
+            <button class="clear-completed" @click="empty">
                 Clear
             </button>
         </footer>
@@ -83,6 +83,9 @@
                 },
                 remove:function(index){
                     this.list.splice(index,1);
+                },
+                empty:function(){
+                    this.list=[];
                 }
             }
         })
