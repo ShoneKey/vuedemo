@@ -8,19 +8,20 @@
 </head>
 <body>
     <div id="app">
-        <input type="button" value="点击测试" @click="solo">
-        <input type="text" @keyup.space="sayHi">
+        <input type="button" value="修改msg" @click="setMsg">
+        <input type="text" v-model="message">
+        <h2 v-text="message"></h2>
     </div>
    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
    <script>
        var vm = new Vue({
            el:"#app",           
+           data:{
+               message:"全栈测试工程师"
+           },
            methods:{
-               solo:function(){
-                    console.log('music走起~');
-               },
-               sayHi:function(){
-                    alert('吃饭没?');
+               setMsg:function(){
+                   this.message == "全栈测试工程师" ? this.message ="devops部署工程师":this.message ="全栈测试工程师";
                }
            }
        })
