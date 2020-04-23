@@ -4,25 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue基础</title>
+    <style>
+        .active{
+            border:1px solid red;
+        }
+    </style>
 </head>
 <body>
    <div id="app">
-       <input type="button" value="显示切换" @click="toggleIsShow">
-       <p v-if="isShow">大家好，我是渣渣灰</p>
-       <p v-show="isShow">大家好，我是渣渣灰-vshow显示效果</p>
+       <img v-bind:src="imgSrc" alt="">
+       <br>
+       <img :src="imgSrc" alt="" :title="imgTitle+'!!!!'" 
+       :class="{active:isActive}" @click="toggleActive">
    </div>
    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
    <script>
        var vm = new Vue({
            el:"#app",
            data:{
-                isShow:false,
-
+               imgSrc:"http://www.itheima.com/images/logo.png",
+               imgTitle:"渣渣灰专用",
+               isActive:false
            },
            methods:{
-               toggleIsShow:function(){
-                   this.isShow=!this.isShow;
-               }
+                toggleActive:function(){
+                    this.isActive=!this.isActive;
+                }
            }
        })
    </script>
