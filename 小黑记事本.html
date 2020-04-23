@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>记事本训练</title>
+    <style>
+        #todoapp{
+            width: 300px;
+            height: 450px;
+            border:3px solid gold;
+            margin:auto;
+        }
+        .main ul{
+            list-style: none;
+            width: 200px;            
+            margin:20px auto;
+        }
+        .main ul>li{
+            width: 150px;
+            height: 20px;            
+            margin:5px auto;
+        }
+        .view span{
+            
+            width: 20px;
+            margin:auto;
+        }
+        
+        h1{
+            text-align: center;
+        }
+        input{
+            display:block;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+    <section id="todoapp">
+        <header>
+            <h1>记事本</h1>
+            <input type="text" v-model="inputValue" @keyup.enter="add" class="new-todo" placeholder="请输入任务"
+            autofocus="autofocus" autocomplete="off">
+        </header>
+        <section class="main">
+            <ul class="todo-list">
+                <li class="todo" v-for="(item,index) in list">
+                    <div class="view">
+                        <span class="index">{{index+1}}</span>
+                        <label >{{item}}</label>
+                        <button class="destory">X</button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <footer class="footer"></footer>
+    </section>
+    <footer class="info">
+
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:"#todoapp",
+            data:{
+                list:["吃饭","睡觉","打豆豆"],
+                inputValue:""
+            },
+            methods:{
+                add:function(){
+                    this.list.push(this.inputValue);
+                }
+            }
+        })
+    </script>
+</body>
+</html>
