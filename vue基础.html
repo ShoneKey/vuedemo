@@ -8,29 +8,19 @@
 </head>
 <body>
     <div id="app">
-        <input type="button" value="添加菜单" @click="add">
-        <input type="button" value="删除菜单" @click="remove">
-        <ul>
-            <li v-for="(it,index)  in arr">
-                {{index+1}}{{it}}分公司
-            </li>
-        </ul>
-        <h2 v-for="item in foods">{{item}}</h2>
+        <input type="button" value="点击测试" @click="solo">
+        <input type="text" @keyup.space="sayHi">
     </div>
    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
    <script>
        var vm = new Vue({
-           el:"#app",
-           data:{
-               arr:["北京","上海","广州","深圳"],
-               foods:['红烧牛肉','清蒸羊羔','红烧紫萼','叫花鸡']
-           },
+           el:"#app",           
            methods:{
-               add:function(){
-                    this.foods.push('肉肉')
+               solo:function(){
+                    console.log('music走起~');
                },
-               remove:function(){
-                    this.foods.shift()
+               sayHi:function(){
+                    alert('吃饭没?');
                }
            }
        })
