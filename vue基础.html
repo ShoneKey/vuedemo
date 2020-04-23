@@ -5,31 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue基础</title>
     <style>
-        .active{
-            border:1px solid red;
+       
+        .imgBox{
+            width: 800px;
+            height: 600px;
+            margin: auto;    
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        .left{
+            float: right;
+        }
+        .right{
+            float: left;
+        }
+        .left,.right{
+            width: 50px;
+            height: 100px;
+            position:absolute;
         }
     </style>
 </head>
 <body>
-   <div id="app">
-       <img v-bind:src="imgSrc" alt="">
-       <br>
-       <img :src="imgSrc" alt="" :title="imgTitle+'!!!!'" 
-       :class="{active:isActive}" @click="toggleActive">
-   </div>
+    <div id="mask">
+        <div class="center">
+            <!-- 图片 -->
+            <div class="imgBox">
+                <!-- 左箭头 -->
+                <a href="javascript:void(0)" class="left" >
+                    <img src="../images/vue_src/prev.png" alt="" @click="prev" v-show="index!=0">
+                </a>
+                <img :src="imgArr[index]" alt="">
+            
+                <!-- 右箭头 -->
+                <a href="javascript:void(0)" class="right" >
+                    <img src="../images/vue_src/next.png" alt="" @click="next" v-show="index<imgArr.length-1">
+                </a>
+            </div>
+        </div>
+    </div>
+  
    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
    <script>
        var vm = new Vue({
-           el:"#app",
+           el:"#mask",
            data:{
-               imgSrc:"http://www.itheima.com/images/logo.png",
-               imgTitle:"渣渣灰专用",
-               isActive:false
+               imgArr:[
+                   "../images/vue_src/IMG_20200105_140801.jpg",
+                   "../images/vue_src/IMG_20200105_140814.jpg",
+                   "../images/vue_src/IMG_20200105_140853.jpg",
+                   "../images/vue_src/IMG_20200105_141140.jpg",
+                   "../images/vue_src/IMG_20200105_141433.jpg",
+                   "../images/vue_src/IMG_20200105_141718.jpg",
+                   "../images/vue_src/IMG_20200105_141725.jpg",
+                   "../images/vue_src/IMG_20200105_141943.jpg",
+               ],
+               index:0,
            },
            methods:{
-                toggleActive:function(){
-                    this.isActive=!this.isActive;
-                }
+               prev:function(){
+                   if(this.index>0){
+                    this.index--;
+                   }
+                   
+               },
+               next:function(){
+                   if(this.index<this.imgArr.length){
+                    this.index++;
+                   }
+               }
            }
        })
    </script>
